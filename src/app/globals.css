@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — manual de marca Dra. Bianca de Franco
+   Pantone 7533C / 7551U / 7534U + neutro claro
+--------------------------------------------------------------------------- */
+@theme {
+  --color-espresso: #48372a; /* Pantone 7533C */
+  --color-espresso-soft: #5c4838;
+  --color-gold: #b18649; /* Pantone 7551U */
+  --color-gold-deep: #9f7c23; /* dourado do selo original */
+  --color-sand: #d0cac2; /* Pantone 7534U */
+  --color-sand-soft: #e4e0da;
+  --color-cloud: #f2f2f2;
+
+  --font-display: var(--font-flatline), "Optima", "Palatino Linotype", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-seal-spin: seal-spin 84s linear infinite;
+  --animate-ring-spin: seal-spin 9s linear infinite;
+  --animate-seal-spin-slow: seal-spin 120s linear infinite;
+  --animate-shimmer: shimmer 2.6s var(--ease-brand) infinite;
+
+  @keyframes seal-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes shimmer {
+    0%,
+    100% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    45% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(120%);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cloud);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Foco visível e coerente com a marca em todos os elementos interativos. */
+  :where(a, button):focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-gold) 28%, transparent);
+    color: var(--color-espresso);
+  }
+}
+
+/* Respeita quem pediu menos movimento no sistema operacional. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
