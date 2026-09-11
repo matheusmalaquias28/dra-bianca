@@ -8,7 +8,7 @@ export const site = {
   /** Trocar pelo domínio final antes do deploy de produção. */
   url: "https://biancadefranco.com.br",
   description:
-    "Dra. Bianca de Franco — dermatologista pela SBD, especialista em cabelos, beleza natural e autoestima. Agendamentos nas clínicas do Ipanema e de Niterói.",
+    "Dra. Bianca De Franco — dermatologista pela SBD, especialista em cabelos, beleza natural e autoestima. Agendamentos nas clínicas do Ipanema e de Niterói.",
 } as const;
 
 export type LinkKind = "booking" | "featured" | "social";
