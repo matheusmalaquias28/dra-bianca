@@ -1,5 +1,5 @@
 export const site = {
-  name: "Dra. Bianca de Franco",
+  name: "Dra. Bianca De Franco",
   specialty: "Dermatologia",
   bio: "Dermatologista pela SBD. Especialista em cabelos, beleza natural e autoestima.",
   /** Registro profissional. Se quiser exibir a UF, use o formato "CRM-RJ 52102361-6". */
