@@ -21,8 +21,8 @@ export function Hero() {
   const radius = useTransform(scrollYProgress, [0, 0.5], ["0rem", "4rem"]);
 
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[40rem] w-full">
-      <motion.div style={{ borderBottomLeftRadius: radius, borderBottomRightRadius: radius }} className="sticky top-[4.5rem] h-[calc(100svh-4.5rem)] w-full overflow-hidden rounded-t-[1.5rem] bg-espresso sm:top-0 sm:h-[100svh] sm:rounded-t-none">
+    <section ref={ref} className="relative h-[120svh] min-h-[40rem] w-full pt-[4.5rem] sm:h-[100svh] sm:pt-[5rem]">
+      <motion.div style={{ borderBottomLeftRadius: radius, borderBottomRightRadius: radius }} className="sticky top-[4.5rem] h-[calc(120svh-4.5rem)] w-full overflow-hidden rounded-t-[1.5rem] bg-espresso sm:top-[5rem] sm:h-[calc(100svh-5rem)] sm:bg-[#EFE2DB]">
         <motion.div aria-hidden style={{ scale: bgScale, y: bgY }} className="absolute inset-0 origin-center">
           <Image
             src="/images/bg-mobile-dra-bianca.jpg"
@@ -38,7 +38,7 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="hidden object-cover sm:block"
+            className="hidden object-contain object-right sm:block"
           />
         </motion.div>
 
@@ -59,7 +59,7 @@ export function Hero() {
             as="h1"
             lines={lines}
             delay={0.25}
-            className="font-display text-[clamp(2.4rem,5.28vw,5.04rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-espresso sm:text-[clamp(3rem,6.6vw,6.3rem)] lg:text-[clamp(2.55rem,5.61vw,5.355rem)] [@media(min-width:1280px)and(max-width:2000px)]:text-[clamp(2.17rem,4.77vw,4.55rem)]!"
+            className="font-display text-[clamp(2.4rem,5.28vw,5.04rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-espresso sm:text-[clamp(3rem,6.6vw,6.3rem)] lg:text-[clamp(2.55rem,5.61vw,5.355rem)] [@media(min-width:1280px)_and_(max-width:2000px)]:text-[clamp(2.17rem,4.77vw,4.55rem)]!"
           />
 
           <motion.div
