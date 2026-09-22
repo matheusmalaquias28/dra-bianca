@@ -1,12 +1,16 @@
+"use client";
+
 import { ImagePlaceholder } from "./ImagePlaceholder";
 import { InViewItem } from "./ScrollReveal";
+import { useContactModal } from "./ContactModal";
 import { ArrowIcon } from "@/components/icons";
 import type { Treatment } from "@/config/content";
 
 export function TreatmentCard({ treatment, tall = false }: { treatment: Treatment; tall?: boolean }) {
+  const { open } = useContactModal();
   return (
     <InViewItem className="group">
-      <a href={treatment.href} target="_blank" rel="noopener noreferrer" className="block">
+      <button type="button" onClick={open} className="block w-full text-left">
         <ImagePlaceholder
           src={treatment.image}
           alt={treatment.label}
@@ -24,7 +28,7 @@ export function TreatmentCard({ treatment, tall = false }: { treatment: Treatmen
           </div>
           <ArrowIcon className="mt-1.5 size-4 shrink-0 text-espresso/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gold" />
         </div>
-      </a>
+      </button>
     </InViewItem>
   );
 }

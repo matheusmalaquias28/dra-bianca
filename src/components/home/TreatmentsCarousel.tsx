@@ -6,6 +6,7 @@ import * as motion from "motion/react-client";
 import type { Variants } from "motion/react";
 import { LineReveal } from "@/components/site/ScrollFx";
 import { Button } from "@/components/site/Button";
+import { useContactModal } from "@/components/site/ContactModal";
 import { ArrowIcon } from "@/components/icons";
 import { treatments } from "@/config/content";
 
@@ -26,6 +27,7 @@ export function TreatmentsCarousel() {
   const trackRef = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const { open } = useContactModal();
 
   const sync = useCallback(() => {
     const el = trackRef.current;
@@ -89,11 +91,10 @@ export function TreatmentsCarousel() {
             variants={cardVariants}
             className="w-[76vw] shrink-0 snap-start sm:w-[44vw] lg:w-[26vw] xl:w-[21vw] last:mr-5 sm:last:mr-8 lg:last:mr-14"
           >
-            <a
-              href={t.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block aspect-[3/4] overflow-hidden rounded-[1.75rem]"
+            <button
+              type="button"
+              onClick={open}
+              className="group relative block aspect-[3/4] w-full overflow-hidden rounded-[1.75rem] text-left"
             >
               <Image
                 src={t.image}
@@ -124,7 +125,7 @@ export function TreatmentsCarousel() {
                   {t.description}
                 </p>
               </div>
-            </a>
+            </button>
           </motion.li>
         ))}
       </motion.ul>

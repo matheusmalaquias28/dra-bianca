@@ -59,7 +59,7 @@ export function Hero() {
             as="h1"
             lines={lines}
             delay={0.25}
-            className="font-display text-[clamp(3rem,6.6vw,6.3rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-espresso lg:text-[clamp(2.55rem,5.61vw,5.355rem)]"
+            className="font-display text-[clamp(2.4rem,5.28vw,5.04rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-espresso sm:text-[clamp(3rem,6.6vw,6.3rem)] lg:text-[clamp(2.55rem,5.61vw,5.355rem)] [@media(min-width:1280px)and(max-width:2000px)]:text-[clamp(2.17rem,4.77vw,4.55rem)]!"
           />
 
           <motion.div
