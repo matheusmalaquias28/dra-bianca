@@ -9,7 +9,53 @@ export const site = {
   url: "https://biancadefranco.com.br",
   description:
     "Dra. Bianca De Franco — dermatologista pela SBD, especialista em cabelos, beleza natural e autoestima. Agendamentos nas clínicas do Ipanema e de Niterói.",
+  /** Imagem social (Open Graph / Twitter). É a mesma imagem de fundo da hero desktop. */
+  ogImage: "/images/bg-desktop-dra-bianca-de-franco.jpg",
+  ogImageWidth: 2643,
+  ogImageHeight: 1486,
+  locale: "pt_BR",
 } as const;
+
+/** Palavras-chave principais para SEO (busca tradicional e por IA). */
+export const keywords = [
+  "dermatologista Rio de Janeiro",
+  "dermatologista Ipanema",
+  "dermatologista Niterói",
+  "Dra. Bianca De Franco",
+  "dermatologia clínica",
+  "dermatologia estética",
+  "tricologia",
+  "queda de cabelo",
+  "tratamento de melasma",
+  "manchas na pele",
+  "acne",
+  "botox",
+  "preenchimento facial",
+  "skinbooster",
+  "rejuvenescimento facial",
+  "ultrassom microfocado",
+  "SBD",
+];
+
+/** Dados estruturados de cada clínica para JSON-LD (Schema.org). */
+export const clinicSchema: Record<
+  Clinic["id"],
+  { streetAddress: string; locality: string; region: string; postalCode?: string; telephone: string }
+> = {
+  ipanema: {
+    streetAddress: "Rua Visconde de Pirajá, 608 — salas 604/605, Ipanema",
+    locality: "Rio de Janeiro",
+    region: "RJ",
+    telephone: "+55 21 97765-9559",
+  },
+  niteroi: {
+    streetAddress: "Rua Dr. Celestino, 122 — Ioffices",
+    locality: "Niterói",
+    region: "RJ",
+    postalCode: "24020-091",
+    telephone: "+55 21 99571-8080",
+  },
+};
 
 export type NavItem = { label: string; href: string };
 

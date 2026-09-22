@@ -7,7 +7,9 @@ import { treatments, treatmentCategories, technologies } from "@/config/content"
 
 export const metadata: Metadata = {
   title: "Tratamentos",
-  description: "Tratamentos dermatológicos e estéticos para rosto, cabelo e pele.",
+  description: "Tratamentos dermatológicos e estéticos para rosto, cabelo e pele: botox, preenchimento, skinbooster, ultrassom microfocado, tricologia e mais.",
+  alternates: { canonical: "/tratamentos" },
+  openGraph: { url: "/tratamentos", title: "Tratamentos — Dra. Bianca De Franco" },
 };
 
 export default function TratamentosPage() {

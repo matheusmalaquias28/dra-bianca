@@ -7,7 +7,9 @@ import { clinics, socialLinks, site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contato",
-  description: "Endereços, horários e WhatsApp das clínicas Ipanema e Niterói.",
+  description: "Endereços, horários e WhatsApp das clínicas da Dra. Bianca De Franco em Ipanema (Rio de Janeiro) e Niterói.",
+  alternates: { canonical: "/contato" },
+  openGraph: { url: "/contato", title: "Contato — Dra. Bianca De Franco" },
 };
 
 export default function ContatoPage() {

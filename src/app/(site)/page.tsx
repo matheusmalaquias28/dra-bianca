@@ -11,7 +11,11 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Início",
+  title: "Dra. Bianca De Franco — Dermatologista em Ipanema e Niterói",
+  description:
+    "Dermatologia clínica e estética com a Dra. Bianca De Franco, membro da SBD. Rejuvenescimento, tricologia, tratamento de melasma, acne e mais — em Ipanema e Niterói (RJ).",
+  alternates: { canonical: "/" },
+  openGraph: { url: "/", title: "Dra. Bianca De Franco — Dermatologia em Ipanema e Niterói" },
 };
 
 export default function HomePage() {

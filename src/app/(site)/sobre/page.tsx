@@ -7,7 +7,9 @@ import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Sobre",
-  description: "Conheça a trajetória e a filosofia de atendimento da Dra. Bianca de Franco.",
+  description: "Conheça a trajetória e a filosofia de atendimento da Dra. Bianca De Franco, dermatologista membro da SBD.",
+  alternates: { canonical: "/sobre" },
+  openGraph: { url: "/sobre", title: "Sobre a Dra. Bianca De Franco" },
 };
 
 const credentials = [

@@ -5,6 +5,8 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { InViewItem } from "@/components/site/ScrollReveal";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { PostBody } from "@/components/blog/PostBody";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { articleJsonLd } from "@/lib/structured-data";
 import { ArrowIcon } from "@/components/icons";
 import { getAllPosts, getAllSlugs, getPostBySlug, formatDate } from "@/lib/blog";
 
@@ -22,9 +24,28 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
+  const url = `/blog/${post.slug}`;
+  const image = post.image ?? undefined;
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: [post.category, "dermatologia", "Dra. Bianca De Franco"],
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date,
+      section: post.category,
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      ...(image ? { images: [image] } : {}),
+    },
   };
 }
 
@@ -37,6 +58,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <JsonLd data={articleJsonLd(post)} />
       <article className="w-full bg-cloud px-5 pt-36 pb-20 sm:px-8 sm:pt-44 sm:pb-28 lg:px-14">
         <div className="mx-auto max-w-3xl">
           <InViewItem>

@@ -6,7 +6,9 @@ import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Conteúdo educativo sobre dermatologia, pele e cabelo.",
+  description: "Conteúdo educativo sobre dermatologia, pele e cabelo pela Dra. Bianca De Franco.",
+  alternates: { canonical: "/blog" },
+  openGraph: { url: "/blog", title: "Blog — Dra. Bianca De Franco" },
 };
 
 export default async function BlogPage() {
