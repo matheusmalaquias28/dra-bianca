@@ -22,7 +22,7 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[40rem] w-full">
-      <motion.div style={{ borderBottomLeftRadius: radius, borderBottomRightRadius: radius }} className="sticky top-0 h-[100svh] w-full overflow-hidden bg-espresso">
+      <motion.div style={{ borderBottomLeftRadius: radius, borderBottomRightRadius: radius }} className="sticky top-[4.5rem] h-[calc(100svh-4.5rem)] w-full overflow-hidden rounded-t-[1.5rem] bg-espresso sm:top-0 sm:h-[100svh] sm:rounded-t-none">
         <motion.div aria-hidden style={{ scale: bgScale, y: bgY }} className="absolute inset-0 origin-center">
           <Image
             src="/images/bg-mobile-dra-bianca.jpg"
@@ -72,8 +72,7 @@ export function Hero() {
               Dermatologia · Ipanema &amp; Niterói
             </p>
             <p className="text-[1.0625rem] leading-relaxed text-espresso-soft">
-              Dermatologia clínica e estética conduzida com técnica e sensibilidade — resultados que
-              parecem seus, só que descansados.
+              Dermatologia clínica e estética conduzida com técnica e sensibilidade.
             </p>
             <div>
               <ContactButton variant="primary">Agendar consulta</ContactButton>
