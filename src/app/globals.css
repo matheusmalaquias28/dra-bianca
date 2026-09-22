@@ -22,6 +22,18 @@
   --animate-ring-spin: seal-spin 9s linear infinite;
   --animate-seal-spin-slow: seal-spin 120s linear infinite;
   --animate-shimmer: shimmer 2.6s var(--ease-brand) infinite;
+  --animate-ken-burns: ken-burns 22s var(--ease-brand) infinite alternate;
+  --animate-float-slow: float-slow 7s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 
   @keyframes seal-spin {
     from {
@@ -44,6 +56,40 @@
     100% {
       transform: translateX(120%);
     }
+  }
+
+  @keyframes ken-burns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.09);
+    }
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Sem JS não há observer para revelar as headlines: mostra o texto direto. */
+@media (scripting: none) {
+  [data-reveal] span {
+    transform: none !important;
+  }
+}
+
+/* Trilho de carrossel: rola, mas sem barra visível. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -88,4 +134,91 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Conteúdo dos posts do blog — usado tanto na página pública quanto no editor
+   do painel (a classe é aplicada ao ProseMirror), mantendo o mesmo visual. */
+.blog-content {
+  color: color-mix(in srgb, var(--color-espresso) 75%, transparent);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.blog-content > :first-child {
+  margin-top: 0;
+}
+.blog-content h2 {
+  margin: 3rem 0 1rem;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-espresso);
+}
+.blog-content h3 {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-espresso);
+}
+.blog-content p {
+  margin-bottom: 1.25rem;
+}
+.blog-content ul {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding-left: 0.25rem;
+}
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.blog-content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 9999px;
+  background-color: var(--color-gold);
+}
+.blog-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  list-style: decimal;
+}
+.blog-content blockquote {
+  margin: 2rem 0;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 25%, transparent);
+  background-color: color-mix(in srgb, var(--color-sand-soft) 60%, transparent);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--color-espresso) 70%, transparent);
+}
+.blog-content strong {
+  font-weight: 600;
+  color: var(--color-espresso);
+}
+.blog-content a {
+  color: var(--color-espresso);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-gold) 50%, transparent);
+  text-underline-offset: 4px;
+}
+.blog-content a:hover {
+  color: var(--color-gold);
+}
+.blog-content img {
+  margin: 2rem 0;
+  border-radius: 1.25rem;
+  width: 100%;
+  height: auto;
+}
+.blog-content:focus {
+  outline: none;
 }

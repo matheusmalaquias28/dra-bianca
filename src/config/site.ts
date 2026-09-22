@@ -11,6 +11,50 @@ export const site = {
     "Dra. Bianca de Franco — dermatologista pela SBD, especialista em cabelos, beleza natural e autoestima. Agendamentos nas clínicas do Ipanema e de Niterói.",
 } as const;
 
+export type NavItem = { label: string; href: string };
+
+export const nav: NavItem[] = [
+  { label: "Início", href: "/" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Tratamentos", href: "/tratamentos" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contato", href: "/contato" },
+];
+
+export type Clinic = {
+  id: "ipanema" | "niteroi";
+  name: string;
+  /** Se `addressConfirmed` for false, o endereço é um placeholder a validar com a clínica. */
+  address: string;
+  addressConfirmed: boolean;
+  hours: string;
+  whatsapp: string;
+  phoneLabel: string;
+};
+
+export const clinics: Clinic[] = [
+  {
+    id: "ipanema",
+    name: "Clínica Ipanema",
+    address: "Rua Visconde de Pirajá, nº 608 — salas 604/605, Ipanema, Rio de Janeiro – RJ",
+    addressConfirmed: true,
+    hours: "Segunda a sexta, 9h às 19h",
+    whatsapp:
+      "https://wa.me/5521977659559?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20em%20Ipanema!",
+    phoneLabel: "(21) 97765-9559",
+  },
+  {
+    id: "niteroi",
+    name: "Clínica Niterói",
+    address: "R. Dr. Celestino, nº 122 — Ioffices, Niterói – RJ, 24020-091",
+    addressConfirmed: true,
+    hours: "Segunda a sexta, 9h às 19h",
+    whatsapp:
+      "https://api.whatsapp.com/send/?phone=5521995718080&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+consulta+em+Niter%C3%B3i%21&type=phone_number&app_absent=0",
+    phoneLabel: "(21) 99571-8080",
+  },
+];
+
 export type LinkKind = "booking" | "featured" | "social";
 
 export type SiteLink = {
@@ -46,16 +90,15 @@ export const links: SiteLink[] = [
     id: "site",
     label: "Meu site",
     hint: "Site oficial",
-    href: null,
+    href: "/",
     kind: "featured",
     icon: "globe",
-    comingSoon: true,
   },
   {
     id: "instagram",
     // espaço não-separável: garante a quebra "INSTAGRAM / DA CLÍNICA" em qualquer largura
     label: "Instagram da\u00A0clínica",
-    href: "https://www.instagram.com/dermatobf",
+    href: "https://www.instagram.com/biancadefranco",
     kind: "social",
     icon: "instagram",
   },
