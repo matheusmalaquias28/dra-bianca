@@ -82,6 +82,7 @@
 @media (scripting: none) {
   [data-reveal] span {
     transform: none !important;
+    opacity: 1 !important;
   }
 }
 

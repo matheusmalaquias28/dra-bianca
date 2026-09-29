@@ -26,7 +26,7 @@ export function ConcernsList() {
               className="mt-6 font-display text-[3.25rem] leading-[0.92] font-semibold tracking-[-0.03em] text-cloud sm:text-[clamp(2.1rem,4.9vw,5.25rem)]"
             />
             <p className="mt-8 max-w-sm text-[1.0625rem] leading-relaxed text-cloud/55">
-              Fale sobre o que te tira a confiança e a gente traduz isso em plano de tratamento.
+            Me conta o que te incomoda e abala a sua confiança que nós traduzimos a sua queixa em plano de tratamento personalizado.
             </p>
 
             <div className="relative mt-12 hidden aspect-[4/3] w-full max-w-md overflow-hidden rounded-[2rem] lg:block">

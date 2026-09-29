@@ -5,10 +5,10 @@ import { TreatmentsCarousel } from "@/components/home/TreatmentsCarousel";
 import { AboutSplit } from "@/components/home/AboutSplit";
 import { ConcernsList } from "@/components/home/ConcernsList";
 import { Technologies } from "@/components/home/Technologies";
+import { XerfSpotlight } from "@/components/home/XerfSpotlight";
 import { InstagramRail } from "@/components/home/InstagramRail";
 import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { Testimonials } from "@/components/home/Testimonials";
-import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
   title: "Dra. Bianca De Franco — Dermatologista em Ipanema e Niterói",
@@ -27,10 +27,10 @@ export default function HomePage() {
       <AboutSplit />
       <ConcernsList />
       <Technologies />
+      <XerfSpotlight />
       <InstagramRail />
       <BlogTeaser />
       <Testimonials />
-      <FinalCta />
     </>
   );
 }

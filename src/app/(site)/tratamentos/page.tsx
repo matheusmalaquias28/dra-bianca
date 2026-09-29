@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { OtherTreatmentsList } from "@/components/site/OtherTreatmentsList";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { TreatmentCard } from "@/components/site/TreatmentCard";
 import { InViewGroup, InViewItem } from "@/components/site/ScrollReveal";
@@ -7,7 +8,7 @@ import { treatments, treatmentCategories, technologies } from "@/config/content"
 
 export const metadata: Metadata = {
   title: "Tratamentos",
-  description: "Tratamentos dermatológicos e estéticos para rosto, cabelo e pele: botox, preenchimento, skinbooster, ultrassom microfocado, tricologia e mais.",
+  description: "Tratamentos dermatológicos e estéticos para rosto, cabelo e pele: tricologia, ultrassom microfocado, toxina botulínica, preenchimento, bioestimulador de colágeno e lasers.",
   alternates: { canonical: "/tratamentos" },
   openGraph: { url: "/tratamentos", title: "Tratamentos — Dra. Bianca De Franco" },
 };
@@ -44,6 +45,23 @@ export default function TratamentosPage() {
           </section>
         );
       })}
+
+      <section className="w-full bg-cloud px-5 pt-8 pb-24 sm:px-8 lg:px-14">
+        <InViewItem>
+          <h2 className="font-display text-2xl font-semibold text-espresso sm:text-3xl">
+            Demais tratamentos
+          </h2>
+        </InViewItem>
+        <InViewItem className="mt-3">
+          <p className="max-w-xl text-[0.9375rem] leading-relaxed text-espresso/55">
+            Procedimentos também disponíveis na clínica. A indicação e o número de sessões são
+            definidos na consulta.
+          </p>
+        </InViewItem>
+        <div className="mt-10">
+          <OtherTreatmentsList />
+        </div>
+      </section>
 
       <section className="w-full bg-espresso px-5 py-24 text-cloud sm:px-8 sm:py-32 lg:px-14">
         <div className="w-full">

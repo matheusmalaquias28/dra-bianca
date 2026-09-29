@@ -48,7 +48,7 @@ export function Hero() {
           transition={{ duration: 1.4, ease, delay: 0.6 }}
           className="absolute top-28 right-5 hidden sm:right-8 sm:block lg:right-14"
         >
-          <BrandSeal className="size-28 lg:size-36 [&_svg:last-child]:text-cloud" />
+          <BrandSeal className="size-28 lg:size-36 [&_svg]:text-cloud" />
         </motion.div>
 
         <motion.div

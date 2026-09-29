@@ -131,7 +131,7 @@ export function Header() {
             />
 
             <BrandSeal
-              className="pointer-events-none absolute -top-12 -left-12 size-48 [&_svg:last-child]:text-cloud"
+              className="pointer-events-none absolute -top-12 -left-12 size-48 [&_svg]:text-cloud"
               spinClassName="[animation:seal-spin_16s_linear_infinite] motion-reduce:[animation:none]"
             />
 

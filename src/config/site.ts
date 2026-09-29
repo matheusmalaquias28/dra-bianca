@@ -29,7 +29,7 @@ export const keywords = [
   "tratamento de melasma",
   "manchas na pele",
   "acne",
-  "botox",
+  "toxina botulínica",
   "preenchimento facial",
   "skinbooster",
   "rejuvenescimento facial",
@@ -49,10 +49,10 @@ export const clinicSchema: Record<
     telephone: "+55 21 97765-9559",
   },
   niteroi: {
-    streetAddress: "Rua Dr. Celestino, 122 — Ioffices",
+    streetAddress: "Rua Miguel de Frias n° 150, sala 1212, Icaraí.",
     locality: "Niterói",
     region: "RJ",
-    postalCode: "24020-091",
+    postalCode: "24220-003",
     telephone: "+55 21 99571-8080",
   },
 };
@@ -92,7 +92,7 @@ export const clinics: Clinic[] = [
   {
     id: "niteroi",
     name: "Clínica Niterói",
-    address: "R. Dr. Celestino, nº 122 — Ioffices, Niterói – RJ, 24020-091",
+    address: "Rua Miguel de Frias n° 150, sala 1212, Icaraí. – RJ, 24220-003",
     addressConfirmed: true,
     hours: "Segunda a sexta, 9h às 19h",
     whatsapp:

@@ -40,7 +40,7 @@ export function AboutSplit() {
           <div className="lg:sticky lg:top-32">
             <p className="text-[0.6875rem] font-semibold tracking-[0.35em] text-gold uppercase">Quem vai cuidar de você</p>
             <LineReveal
-              lines={["Dra. Bianca", "de Franco"]}
+              lines={["Dra. Bianca", "De Franco"]}
               className="mt-6 font-display text-[2.75rem] leading-[0.95] font-semibold tracking-[-0.02em] text-espresso sm:text-[clamp(2rem,6vw,5.5rem)]"
             />
             <motion.p
@@ -50,9 +50,7 @@ export function AboutSplit() {
               transition={{ duration: 0.8, ease, delay: 0.3 }}
               className="mt-8 max-w-md text-[1.0625rem] leading-relaxed text-espresso/65"
             >
-              Dermatologista pela UERJ, com residência em Dermatologia Clínica e fellow em Tricologia.
-              Membro efetivo da Sociedade Brasileira de Dermatologia, atende com um olhar que une
-              ciência, escuta e bom senso estético.
+              Formada em Medicina pela UERJ, com residência em Dermatologia pela UERJ, residência em Dermatologia e hansenologia pela UNIRIO, fellow em Tricologia pela UERJ e fellow em dermatologia Clínica no hospital Santa Maria em Lisboa. Sou membro efetivo da Sociedade Brasileira de Dermatologia (SBD) — sempre em busca de atualização e das técnicas mais seguras para cada paciente.
             </motion.p>
             <div className="mt-8">
               <Button href="/sobre" variant="ghost">

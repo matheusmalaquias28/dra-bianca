@@ -1,8 +1,48 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import * as motion from "motion/react-client";
-import { useScroll, useTransform, useSpring, type MotionValue } from "motion/react";
+import { useScroll, useTransform, useSpring } from "motion/react";
+
+/**
+ * Marca `true` uma vez, quando o elemento entra na tela.
+ *
+ * O timer é rede de segurança, não enfeite: num documento oculto (aba em
+ * segundo plano, janela minimizada) o navegador suspende o pipeline de
+ * renderização e o IntersectionObserver — junto com o rAF — simplesmente não
+ * dispara. Sem essa saída, qualquer conteúdo que nasce escondido esperando o
+ * observer ficaria invisível para sempre. Timers continuam rodando.
+ */
+export function useRevealOnView(ref: RefObject<Element | null>, threshold = 0.12) {
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShown(true);
+        io.disconnect();
+      },
+      { threshold },
+    );
+    io.observe(el);
+
+    const safety = window.setTimeout(() => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) setShown(true);
+    }, 1200);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
+  }, [ref, threshold]);
+
+  return shown;
+}
 
 /** Desloca o filho verticalmente conforme ele atravessa a viewport. */
 export function Parallax({
@@ -67,22 +107,7 @@ export function LineReveal({
   as?: "h1" | "h2" | "p";
 }) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShown(true);
-        io.disconnect();
-      },
-      { threshold: 0.12 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  const shown = useRevealOnView(ref);
 
   return (
     <Tag ref={ref} data-reveal className={className}>
@@ -101,62 +126,6 @@ export function LineReveal({
         </span>
       ))}
     </Tag>
-  );
-}
-
-/** Parágrafo cuja opacidade de cada palavra é dirigida pelo progresso do scroll (seção alta e sticky). */
-export function ScrollWords({
-  text,
-  className = "",
-  heightClass = "h-[220vh]",
-  children,
-  decor,
-}: {
-  text: string;
-  className?: string;
-  heightClass?: string;
-  children?: ReactNode;
-  /** Recebe o progresso da travessia inteira da seção — o conteúdo preso no
-   *  sticky não se move sozinho, então a decoração precisa desse valor de fora. */
-  decor?: (progress: MotionValue<number>) => ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.9", "end 0.6"] });
-  const { scrollYProgress: travel } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const words = text.split(" ");
-  return (
-    <div ref={ref} className={`relative ${heightClass}`}>
-      {/* overflow-hidden: em viewport baixa o conteúdo centralizado transbordaria
-          a caixa e, por ser sticky (posicionado), pintaria sobre a seção seguinte. */}
-      <div className="sticky top-0 flex h-auto flex-col items-center justify-start overflow-hidden pt-24 pb-12 lg:h-dvh lg:justify-center lg:py-16">
-        {decor?.(travel)}
-        {children}
-        <p className={className}>
-          {words.map((word, i) => (
-            <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
-              {word}
-            </Word>
-          ))}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function Word({
-  children,
-  progress,
-  range,
-}: {
-  children: string;
-  progress: MotionValue<number>;
-  range: [number, number];
-}) {
-  const opacity = useTransform(progress, range, [0.12, 1]);
-  return (
-    <span className="relative mr-[0.28em] inline-block">
-      <motion.span style={{ opacity }}>{children}</motion.span>
-    </span>
   );
 }
 
